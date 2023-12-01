@@ -12,7 +12,7 @@ Pour réaliser ce modèle on va utiliser les données stockées dans le dataset 
 
 Ces données consistent en trois fichier HDF5 (d'extension .h5) correspondant chacun à un avion et ses 1000 premiers trajet.
 
-Ces fichiers ont étés créés à l'aide de Pandas en utilisant la commandes `HDFStore` ou la méthode `to_hdf` d'un DataFrame. Ils peuvent donc être lus facilement à laide de la fonction `read_hdf` de Pandas.
+Ces fichiers ont étés créés à l'aide de Pandas en utilisant la commandes `HDFStore` ou la méthode `to_hdf` d'un DataFrame. Ils peuvent donc être lus facilement à l'aide de la fonction `read_hdf` de Pandas.
 
 ### Composition des fichiers.
 
@@ -23,7 +23,7 @@ Chaque élément d'un de ces fichiers HDF est un vol stocké sous forme de DataF
 
 ou utiliser le package h5py qui donne des accès plus rapide au fichier HDF5, mais est moins pratique pour la gestion des métadonnées associées à chaque DataFrame Pandas.
 
-Vous avez ausi quelques exemples 'utilisation de ces données dans le package [tabata](https://github.com/jee51/tabata) et son module opset.py.
+Vous avez ausi quelques exemples d'utilisation de ces données dans le package [tabata](https://github.com/jee51/tabata) et son module opset.py.
 
 ### Variables capitalisés pendant chaque vol.
 
