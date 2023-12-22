@@ -85,5 +85,6 @@ L'indice "i" étant la position de la mesure, 0 correspond à l'avant (avant le 
 7. Travailler sur un modèle local du débit au cours du vol.
 8. Comparer les moteurs.
 9. Catégoriser les missions.
+10. Une fois un modèle construit, rechercher pourquoi certains vols (ou moteurs) consomment plus (ou moins) que la normale.
 
 ...
