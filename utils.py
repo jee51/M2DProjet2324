@@ -3,9 +3,17 @@ import pandas as pd
 
 def detect_phase(df, altitude_threshold = 0.95):
     '''
+        Extracting rules:
         df['M [Mach]'] == 0 => taxi
-        df['ALT [ft]] == 0.95*max altitude => cruise because using alt is more stable
+        df['ALT [ft]] == threshold * max altitude => cruise (because using alt is more stable than using Mach)
         other = climb/descend
+
+        Input: 
+            df: flight dataframe
+            altitude_threshold: threshold for extracting cruising phase
+        Output:
+            Fuel consumption of specified phase
+
     '''
     #Get taxi idx
     #There are 2 taxi phases
@@ -34,11 +42,12 @@ def detect_phase(df, altitude_threshold = 0.95):
 
     return taxi1_idx, climb_idx, cruise_idx, descend_idx, taxi2_idx 
 
-def get_consumption(ac,phase = None):
+def get_consumption(ac,phase: str = None, altitude_threshold: int = 0.95):
     '''
         Input: 
             ac: .h5 files of flight recordings
-            phase: None (the whole flight) or one of the four 'taxi','climb','cruise','descend'
+            phase: None (the whole flight) or one of 'taxi','taxi1', 'taxi2', 'climb','cruise','descend'
+            altitude_threshold: threshold for extracting cruising phase 
         Output:
             Fuel consumption of specified phase
     '''
@@ -54,7 +63,7 @@ def get_consumption(ac,phase = None):
             if Alt_max > 20000:
                 
                 ## selecting phase index
-                phases = detect_phase(df,0.95) # phases = taxi1_idx, climb_idx, cruise_idx, descend_idx, taxi2_idx
+                phases = detect_phase(df, altitude_threshold) # phases = taxi1_idx, climb_idx, cruise_idx, descend_idx, taxi2_idx
 
                 if phases == False:
                     print(i)
