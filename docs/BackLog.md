@@ -10,7 +10,7 @@ _Ce fichier contient le suivi des travaux de l'équipe projet._
 
 ## 2. 17/11/2023
 
-* Présentation des données. Crataion du dictionnaire des variables [Fichier readme](../README.md).
+* Présentation des données. Création du dictionnaire des variables [Fichier readme](../README.md).
 * Discussion autour du format HDF5 et de la toolbox tabata.
 * Préparation de l'installation d'un environnement Python local.
 
