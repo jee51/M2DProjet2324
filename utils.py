@@ -12,8 +12,7 @@ def detect_phase(df, altitude_threshold = 0.95):
             df: flight dataframe
             altitude_threshold: threshold for extracting cruising phase
         Output:
-            Fuel consumption of specified phase
-
+            Couple of start and end indexes for each spécific phase in order of flight sequence: taxi1 (out), climb, cruise, descend, taxi2 (in).
     '''
     #Get taxi idx
     #There are 2 taxi phases
@@ -49,7 +48,9 @@ def get_consumption(ac,phase: str = None, altitude_threshold: int = 0.95):
             phase: None (the whole flight) or one of 'taxi','taxi1', 'taxi2', 'climb','cruise','descend'
             altitude_threshold: threshold for extracting cruising phase 
         Output:
-            Fuel consumption of specified phase
+            A DataFrame with conumns: ['Aircraft', 'Engine', 'Flight', 'Phase duration', 'Alt_max', 'Mach_max', 'Total consumption', 'Consumption volume']
+            Total consumption: the total weight of fuel used by the aircraft.
+            Consumption volume: the volume (in liters) of fuel used by this specific engine.
     '''
 
     dat = []

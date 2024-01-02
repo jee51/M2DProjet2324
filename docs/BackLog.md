@@ -43,3 +43,17 @@ _Figure 2. Si la relation précédente semble très bien approximée par une rel
 ![Mach vs. RPM](images/mach-rpm.png)
 
 _Figure 3. Sur ce graphique on montre que le moteur commence à monter en régime bien avant que l'avion commence à avancer._
+
+## 6. 22/12/2023
+
+Récupération des travaux réalisés par Dinh sous la forme de deux fonctions codées dans le module `util.py`.
+
+* `detect_phase(...)` prend en entrée un DataFrame et renvoie une liste de couples d'index de débutet fin de phase de vol dans l'ordre de la séquence de vol : taxi1 (out), climb, cruise, descend, taxi2 (in).
+
+* `get_consumption(...)` prend en entrée un itérateur sur un fichier avion (par exemple un Opset) et produit en sortie une table contenant les colonnes suivantes : 
+
+        ['Aircraft', 'Engine', 'Flight', 'Phase duration', 'Alt_max', 'Mach_max', 'Total consumption', 'Consumption volume'].
+
+Les deux dernières colonnes représentent:
++ Total consumption : le poids (en kg) de fuel consommé par l'avion durant la phase de vol sélectionnée.
++ Consumption volume : le volume de fuel (en litres) utilisé par ce moteur.
