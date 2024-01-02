@@ -46,7 +46,7 @@ _Figure 3. Sur ce graphique on montre que le moteur commence à monter en régim
 
 ## 6. 22/12/2023
 
-Récupération des travaux réalisés par Dinh sous la forme de deux fonctions codées dans le module `util.py`.
+Récupération des travaux réalisés par Dinh sous la forme de deux fonctions codées dans le module `utils.py`.
 
 * `detect_phase(...)` prend en entrée un DataFrame et renvoie une liste de couples d'index de débutet fin de phase de vol dans l'ordre de la séquence de vol : taxi1 (out), climb, cruise, descend, taxi2 (in).
 
