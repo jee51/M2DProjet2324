@@ -87,7 +87,11 @@ def get_consumption(ac,phase: str = None, altitude_threshold: int = 0.95):
                     idx = np.arange(descend_idx[0],descend_idx[1])    
                 else:
                     idx = np.arange(0,len(df))  
-                            
+
+                total_weight_engine1 = df['Q_1 [lb/h]'].sum()/(3600*2.205) #(to kg)
+                total_weight_engine2 = df['Q_2 [lb/h]'].sum()/(3600*2.205) #(to kg)
+                total_weight = total_weight_engine1 + total_weight_engine2
+
                 df_phase = df.iloc[idx] 
 
                 consumption_engine1 = df_phase['Q_1 [lb/h]'].sum()/(3600*2.205) #(to kg)
@@ -101,9 +105,9 @@ def get_consumption(ac,phase: str = None, altitude_threshold: int = 0.95):
                 Mach_max = df["M [Mach]"].max()
                 
                 dat+= [[ac.storename, 'Left', i, phase_duration, Alt_max, Mach_max, total_consumption, C1]]
-                dat+= [[ac.storename, 'Right', i, phase_duration, Alt_max, Mach_max, total_consumption, C2]]
+                dat+= [[ac.storename, 'Right', i, phase_duration, Alt_max, Mach_max, total_weight, C2]]
 
-    dataframe = pd.DataFrame(dat,columns = ['Aircraft', 'Engine', 'Flight', 'Phase duration', 
-                                            'Alt_max', 'Mach_max', 'Total consumption', 'Consumption volume'])
+    dataframe = pd.DataFrame(dat,columns = ['Aircraft', 'Engine', 'Flight', 'Duration', 
+                                            'Alt_max', 'Mach_max', 'Weight', 'Consumption'])
     
     return dataframe
