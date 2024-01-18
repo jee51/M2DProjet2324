@@ -76,15 +76,23 @@ L'indice "i" étant la position de la mesure, 0 correspond à l'avant (avant le 
 
 ## Programme de travail
 
-1. Accéder aux données, les afficher.
-2. Construire une table de synthèse avec des indicateurs pertinents par vol.
-3. Nettoyer et normaliser les données.
-4. Etudier la prédiction de la consommation globale Q_#.
-5. Observer l'évolution vol après vol.
-6. Chercher des indicateurs influents, diminuer les incertitudes.
-7. Travailler sur un modèle local du débit au cours du vol.
-8. Comparer les moteurs.
-9. Catégoriser les missions.
-10. Une fois un modèle construit, rechercher pourquoi certains vols (ou moteurs) consomment plus (ou moins) que la normale.
+1. [x] Accéder aux données, les afficher.
+2. [x] Construire une table de synthèse avec des indicateurs pertinents par vol.
+3. [ ] Nettoyer et normaliser les données
+4. [x] Etudier la prédiction de la consommation globale Q_#.
+5. [x] Observer l'évolution vol après vol.
+6. [x] Chercher des indicateurs influents, diminuer les incertitudes.
+7. [x] Etudier la consommation par phase de vol.
+8. [ ] Construire un modèle global sur toutes les phases.
+9. [ ] Construire des indicateurs de précision.
+
+à suivre ...
+
+10. [ ] ~~Travailler sur un modèle local du débit au cours du vol.~~
+11. [ ] ~~Comparer les moteurs.~~
+12. [ ] Catégoriser les missions.
+13. [ ] Une fois un modèle construit, rechercher pourquoi certains vols (ou moteurs) consomment plus (ou moins) que la normale.
+14. [ ] Rédiger un draft d'article en Makdown.
+15. [ ] Reprendre l'article sous LaTeX et faire une publication sous Hal.
 
 ...

@@ -111,3 +111,33 @@ def get_consumption(ac,phase: str = None, altitude_threshold: int = 0.95):
                                             'Alt_max', 'Mach_max', 'Weight', 'Consumption'])
     
     return dataframe
+
+#########################################################################################
+class ModelConsoByPhases:
+    """
+    Un modèle réalisant un apprentissage sur une série de données et proposant une fonction de 
+        Paramètres: 
+            ac, acs: One aircraft flight or a liste of aircraft flights.
+            phases: list of phases (None for all phases)
+            altitude_threshold: threshold for extracting cruising phase 
+            width: un paramètre correspondant à la laregur d'un filtrage pour le calcul de l'erreur relative 
+        Méthodes:
+            __init__(altitude_threshold) : creation du modèle.
+            fit(acs, phases) : apprentissage.
+            predict(ac) : calcul de la consommation estimée.
+            score(ac, width) : estimation de l'erreur relative moyenne pour un avion.
+    """
+    
+    def __init__(phases = None, altitude_threshold = 0.95):
+        """
+            phases: a phase list betwwen taxi1, climb, cruise, descend, taxi2.
+        """
+        if isinstance(phase,str):
+            phases = [phases]
+        assert len(phases)>=1, "At least one phase should be given"
+
+        self.phases = phases
+        self.altitude_threshold = altitude_threhold
+        self.models = [None]*len(phases) 
+        self.results = [None]*len(phases)
+    

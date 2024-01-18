@@ -18,4 +18,4 @@ These models are complicated because it is important to be able to interpret eac
 We have 3 data sets, each corresponding to an aircraft of the same type. Each set contains around 1000 successive flights, with measurements made on both engines.
 Flights are therefore stored in tables with the number of seconds elapsed since the ECU was powered up as the time index, and a series of measurements made during the flight as the columns.
 During each flight, aircraft data is recorded, as well as measurements made on each of the two engines. 
-Some measurements are taken at different positions in the engine, called stations, like pressures and temperatures. Station 1 is the air intake and stion 5 is the exhaust nozzle.
+Some measurements are taken at different positions in the engine, called stations, like pressures and temperatures. Station 1 is the air intake and station 5 is the exhaust nozzle.
