@@ -35,7 +35,7 @@ Les vols sont donc stockés dans des DataFrames avec en index temporel le nombre
 
 Durant chaque vol on enregistre des données de l'avion et aussi des mesures faites sur chacun des deux moteurs. Pour distinguer ces mesures les suffixes _1 et _2 sont utilisés respectivement pour le moteur gauche et le moteur droit. (On notera _# ci dessous pour ne pas avoir à distinguer les deux moteurs.)
 
-Certaines mesures sont prises à différents endroits du moteur, ces endroits s'appellent des **stations**, c'est le cas des préessions et températures.
+Certaines mesures sont prises à différents endroits du moteur, ces endroits s'appellent des **stations**, c'est le cas des pressions et températures.
 
 * Pi : pressure
 * Ti : temperature
