@@ -18,4 +18,42 @@ These models are complicated because it is important to be able to interpret eac
 We have 3 data sets, each corresponding to an aircraft of the same type. Each set contains around 1000 successive flights, with measurements made on both engines.
 Flights are therefore stored in tables with the number of seconds elapsed since the ECU was powered up as the time index, and a series of measurements made during the flight as the columns.
 During each flight, aircraft data is recorded, as well as measurements made on each of the two engines. 
-Some measurements are taken at different positions in the engine, called stations, like pressures and temperatures. Station 1 is the air intake and station 5 is the exhaust nozzle.
+Some measurements are taken at different positions in the engine, called stations, like pressures and temperatures. Station 1 is the air intake and station 5 is the exhaust nozzle. The measurements of particular interest to us for this work are described in the table below.
+
+<em>Table 1. List of a few interest variables.</em>
+
+| Variable [unité] | Description |
+|:---------|:------------|
+| ALT [ft] | Altitude |
+| TAT [deg C] | Total Air Température (measured by the aircraft sensor) |
+| M [Mach] | Mach |
+| NAIV_# [bool] | Anti Ice Vanne |
+| P0_# [psia] | Pression en entrée |
+| Q_# [lb/h] | Fuel flow |
+| TLA_# [deg] | Level Angle |
+| T_OIL_# [deg C] | Oil temperature |
+
+The following figure shows an example of conventional flight.
+
+![One flight in cold conditions](../docs/images/one_flight_in%20rough_conditions.png)
+
+<em>Figure 1. This plot shows a classic civil flight in cold condiions. The red bottom line is the altitude (in feet) of the aircraft and the top blue line corresponds to a booleand that indicates if anti-ice is on.</em>
+
+The flight consists mainly of 5 phases: a driving phase (taxi) at the begining and at the end of the flight, a climb phase, a cruise phase and a descent phase.
+In this project we are only interested in flight proper therefore in the three main phases: climb, cruise and descent. 
+In Figure 1, a special case of the anti-ice system has been presented which decreases the power of the engine by hot air sampling. This measure is important because it is a factor of augmentation in consumption. This flight uses the anti-ice in takeoff and landing because the two airports had to be in temperature and humidity winter conditions.
+
+## Methodology
+
+We will create a model of prediction of global consumption, control its robustness by a cross validation process and study its precision.Then it will be possible to look at which flights that consume more or month than normal by binaryly quantifying the prediction residues.
+
+### A first elementary model based on the duration of the flight
+
+La première idée, élémentaire, consiste à regarder la consommation en fonction de la durée du vol. C'est une première approximation logique. L'image suivante donne  
+### Etude de chaque phase
+
+## Results
+
+## Conclusion
+
+## References

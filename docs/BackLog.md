@@ -110,3 +110,10 @@ Des questions se sont posées concernant le poids de l'avion. L'utilisation de l
 Néanmoins nous observons que cette variable est très peu informative sur les phases prises séparément.
 
 > Il faut désormais calculer le gain en précision entre un modèle global et un modèle phase par phase. 
+
+## 8. 19/01/2024
+
+* Julia propose de démarrer le template sous OverLeaf.
+* Dung advances on the indicators and adds it in the get_consumption function. Get an ide of the importance of each indicator during each phase.
+* Achille crée la table de synthèse et commence à programmer un modèle multiphases.
+* Khalifa complète les statistiques avec des indicateurs relatifs et teste un modèle unique basé sur des indicateurs par phase.
