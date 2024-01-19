@@ -11,7 +11,7 @@ The aviation industry has joined forces within the Air Transport Action Group (A
 
 Designing more efficient engines is not the only way to reduce fuel consumption. A very important factor is the way the aircraft is flown.
 Engineers are working on physical and numerical models to identify the most critical phases of flight, and suggest good piloting practices and more suitable routes.
-These models are complicated because it is important to be able to interpret each result in order to infer new rules. This work does not present one of these models, but proposes a rough numerical baseline on which it will be possible to base the qualification of more complex technical solutions.
+These models are complicated because it is important to be able to interpret each result in order to infer new rules. This work does not present one of these models, but proposes a rough numerical baseline on which it will be possible to base the qualification of more complex technical solutions. Once this model has been built, we'll have a hypothesis about the standard behavior of an aircraft, and by observing deviations from this behavior we'll be able to identify particular missions with either excessive or below-normal fuel consumption.
 
 ## Introducing the problem
 
