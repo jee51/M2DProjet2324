@@ -44,7 +44,11 @@ _Figure 2. Si la relation précédente semble très bien approximée par une rel
 
 _Figure 3. Sur ce graphique on montre que le moteur commence à monter en régime bien avant que l'avion commence à avancer._
 
-## 6. 22/12/2023
+## 6. 15/12/2023
+
+_Travail individuel à domicile._.
+
+## 7. 22/12/2023
 
 Récupération des travaux réalisés par Dinh sous la forme de deux fonctions codées dans le module `utils.py`.
 
@@ -58,7 +62,7 @@ Les deux dernières colonnes représentent:
 + Total consumption : le poids (en kg) de fuel consommé par l'avion durant la phase de vol sélectionnée.
 + Consumption volume : le volume de fuel (en litres) utilisé par ce moteur.
 
-## 7. 12/01/2024
+## 8. 12/01/2024
 
 Réalisation d'un modèle de consommation par phase de vol. On a aussi testé l'exploitation d'indicateurs supplémentaire à la phase de vol.
 
@@ -111,7 +115,7 @@ Néanmoins nous observons que cette variable est très peu informative sur les p
 
 > Il faut désormais calculer le gain en précision entre un modèle global et un modèle phase par phase. 
 
-## 8. 19/01/2024
+## 9. 19/01/2024
 
 * Julia propose de démarrer le template sous OverLeaf.
 * Dung advances on the indicators and adds it in the get_consumption function. Get an ide of the importance of each indicator during each phase.
