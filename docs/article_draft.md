@@ -1,7 +1,7 @@
 # <center>A baseline model for turbojet engine fuel consumption</center>
 
 <center>Julia Carbo<sup>1</sup>, Dinh Quang Dung<sup>1</sup>, Achile Ngeuessiek<sup>1</sup>, Khalifa Michel Ouattara<sup>1</sup>, Jérôme Lacaille<sup>1,2</sup></center>
-
+<br>
 <center><sup>1</sup> <em>Université Sorbonne Paris Nord</em></center>
 <center><sup>2</sup> <em>Safran Aircraft Engines</em></center>
 

@@ -98,7 +98,7 @@ def get_consumption(ac,phase: str = None, altitude_threshold: int = 0.95):
                 consumption_engine2 = df_phase['Q_2 [lb/h]'].sum()/(3600*2.205) #(to kg)
                 total_consumption = consumption_engine1 + consumption_engine2
 
-                C1 = consumption_engine1/0.73 
+                C1 = consumption_engine1/0.73 # liters
                 C2 = consumption_engine2/0.73 
 
                 phase_duration = len(df_phase)/3600 # in hour        
