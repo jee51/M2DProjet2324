@@ -49,7 +49,14 @@ We will create a model of prediction of global consumption, control its robustne
 
 ### A first elementary model based on the duration of the flight
 
-La première idée, élémentaire, consiste à regarder la consommation en fonction de la durée du vol. C'est une première approximation logique. L'image suivante donne  
+A first idea, elementary, is to look at consumption according to the duration of the flight.It is a first logical approximation.The following image (Figure 2) gives the result of the linear prediction.
+
+![Duration regression](../docs/images/conso_global.png)
+<em>Figure 2. Regression of the overall consumption of the three planes over the duration of each flight. Each plane is represented by a color and the two engines are distinguished by circles and diamonds.</em>
+
+Le résultat est clairement linéaire, et vu de loin semble assez précis, mais en observant de plus près, on s'apperçoit que la précision est de l'ordre de la consommation elle-même.
+
+
 ### Etude de chaque phase
 
 ## Results

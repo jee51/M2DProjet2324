@@ -104,7 +104,7 @@ strong multicollinearity or other numerical problems.
 
 Le modèle linéaire peut-être encore amélioré car on a clairement des dépendances entre variables et une variance qui dépend de la consommation.
 
-![Consommation monée](../docs/images/conso_climb.png)
+![Consommation montée](../docs/images/conso_climb.png)
 
 Des questions se sont posées concernant le poids de l'avion. L'utilisation de la consommation globale ne peut être exploitée pour estimer cette même consommation. Par contre, pour une phase de vol spécifique, la consommation globale à laquelle devrait s'ajouter une constante correspondant au poids de l'avion et une autre pour palier aux risque de détournement peut être utilisée comme estimation du poids de l'avion au décollage. Typiquement, ce poids devrait être utile pour l'estimation du fuel flow (instantané) réduit de la masse consommée à chaque instant.
 Néanmoins nous observons que cette variable est très peu informative sur les phases prises séparément.
