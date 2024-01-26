@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 '''
     Changelog 19/1: 
@@ -177,3 +178,80 @@ def extend(position, array, look, threshold):
                 break
         # r+=1
     return left_pos, right_pos
+
+class RelativeIqr:
+    """
+        Une classe qui calcule les scores relatifs ou
+    """
+    def __init__(self,y, hy, c=95, p=5):
+        """
+            Calcul d'un score relatif qui utilise l'écart entre les bornes d'une enveloppe correspondant à un intervalle de confiance. L'enveloppe est calculée pour chaque point par les bornes d'un intervalle de confiance d'erreurs relatives pour des observation proches en valeur absolue. La proximité est donnée en proportion (pourcentage) de valeur nominale de l'observation. Par exemple si l'observation est donnée en litre et varie de 600 à 5000 litres, 10% correspond à (5000-500)/10 soit 450 litres près.
+
+            inputs :
+                y  - la valeur réelle de l'observation (p.ex. la consommation).
+                hy - la valeur prédite par le modèle.
+
+            paramètre : 
+                c - la précision de l'intervalle de confiance pour l'écart relatif calculé (par défaut 95%).
+                p  - la précision relative pour le calcul de l'enveloppe (par défaut 5%).
+        """
+
+        self.p = p
+        self.c = c
+        self.y = y
+        self.hy = hy
+
+        q = (100-c)/2
+        w = (max(hy)-min(hy))*p/100.0
+
+        r = (hy-y)/y
+        self.relative_iqr = 100*(np.diff(np.percentile(r,[q, 100-q]))).item()
+
+        up = np.zeros(len(y))
+        dn = np.zeros(len(y))
+
+        dy = y-hy
+        for i, yy in enumerate(y):
+            j = np.argwhere(np.abs(hy-yy)<=w)
+            dn[i], up[i] = np.percentile(dy[j],[2.5, 97.5])
+
+        out = np.zeros(len(y))
+        out[y>hy+up] =  1
+        out[y<hy+dn] = -1
+
+        self.up = up
+        self.dn = dn
+        self.enveloppe_iqr = 100*np.mean((up-dn)/y)
+        self.out = out
+
+    def score(self,enveloppe=True):
+        """
+            Le score correspondant soit au calcul relatif soit au calcul avec enveloppe.
+
+            Pour le calcul relatif : la largeur de l'intervalle de confiance symétrique sur l'erreur relative. Le résultat est exprimé en pourcentage (entre 0 et 100).
+
+            Pour le calcul avec enveloppe : la largeur de l'intervalle de confiance symétrique sur l'erreur relative. Le résultat est exprimé en pourcentage (entre 0 et 100).
+        """
+        if enveloppe:
+            return self.enveloppe_iqr
+        else:
+            return self.relative_iqr
+    
+    def plot(self):
+        """
+            Cette fonction affiche l'enveloppe calculée pour le calcul du score relative_enveloppe_iqr.
+        """
+        y = self.y
+        hy = self.hy
+        up = self.up
+        dn = self.dn
+
+        i = np.argsort(hy)
+
+        plt.fill_between(hy[i], hy[i]+up[i], hy[i]+dn[i], color='lightgreen', alpha=0.9)
+        plt.plot(hy[i],y[i],'b.', alpha=0.1)
+        plt.ylabel('Observed')
+        plt.xlabel('Predicted')
+        plt.title(f"Relative enveloppe with {self.c:.0f}% confidence and local proximity {self.p:.0f}%.")
+
+

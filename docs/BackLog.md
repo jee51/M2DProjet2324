@@ -135,3 +135,7 @@ Un premier projet en LaTeX.
 
 > Reste à faire la validation croisée par avion.
 > Et expliquer les vols surconsommants.
+
+J'ai supprimé l'ancienne version de utils.py et laissé la version locale dans le sous-répertoire notebooks. Ce n'est pas idéal, mais cela permet de faire des import locaux plus simplement sans créer de package.
+
+J'ai rajouté la class RelativeIqr dans utils.py qui permet de calculé le score que je propose avec un intervalle de confiance relatif et évetuellement une enveloppe. Par défaut c'est l'eveloppe qui est calculée, mais en passant False à la fonction score() on a un score relatif global.
