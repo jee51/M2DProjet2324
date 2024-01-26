@@ -124,3 +124,14 @@ Néanmoins nous observons que cette variable est très peu informative sur les p
 
 ## 10. 26/01/2024
 
+Des avancées majeures sur le découpage en phase et les calculs d'indicateurs.
+Des statistiques sur le modèle non linéaire.
+Un premier projet en LaTeX.
+
+* Julia continue la rédaction de l'article à partir d'informations progressivement données dans les Notebooks et sur le draft. Le ficher PDF mis à jour sera stocké dans ./docs.
+* Dung complète les indicateurs par phase.
+* Achille qui termine le modèle multiphases.
+* Khalifa complète le modèle RF et retrouve l'importance des variables par phase. Créer un tableau d'indicateur fianlisé avec les variables importantes par phase (attention aux corrélations).
+
+> Reste à faire la validation croisée par avion.
+> Et expliquer les vols surconsommants.

@@ -92,7 +92,7 @@ L'indice "i" étant la position de la mesure, 0 correspond à l'avant (avant le 
 11. [ ] ~~Comparer les moteurs.~~
 12. [ ] Catégoriser les missions.
 13. [ ] Une fois un modèle construit, rechercher pourquoi certains vols (ou moteurs) consomment plus (ou moins) que la normale.
-14. [ ] Rédiger un draft d'article en Makdown.
-15. [ ] Reprendre l'article sous LaTeX et faire une publication sous Hal.
+14. [x] Rédiger un draft d'article en Makdown.
+15. [x] Reprendre l'article sous LaTeX et faire une publication sous Hal.
 
 ...
