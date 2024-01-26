@@ -118,6 +118,9 @@ Néanmoins nous observons que cette variable est très peu informative sur les p
 ## 9. 19/01/2024
 
 * Julia propose de démarrer le template sous OverLeaf.
-* Dung advances on the indicators and adds it in the get_consumption function. Get an ide of the importance of each indicator during each phase.
+* Dung advances on the indicators and adds it in the get_consumption function. Get an idea of the importance of each indicator during each phase.
 * Achille crée la table de synthèse et commence à programmer un modèle multiphases.
 * Khalifa complète les statistiques avec des indicateurs relatifs et teste un modèle unique basé sur des indicateurs par phase.
+
+## 10. 26/01/2024
+
