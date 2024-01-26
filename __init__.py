@@ -1,1 +1,0 @@
-from .utils import detect_phase, get_consumption

@@ -164,3 +164,4 @@ cython_debug/
 *.h5
 .DS_Store
 .conda
+obsolete/
