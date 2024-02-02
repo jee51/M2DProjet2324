@@ -39,6 +39,27 @@ La fin du chapitre peut se réintégrer au sein du paragraphe précédent pour a
 
 > La variable dépendante, le facteur, c'est la durée, ce qui est logique. La consommation est la cible.
 
+> "The model's coefficients...", mettre moins de précision dans les chiffres et donner les unités.
+
+> Figure 5, si l'idée vous intéresse, pour le calcul de l'enveloppe et observant les valeurs proches en prédiction, il faudrait expliquer l'algorithme.
+
+En général, penser toujours à donner plus de détail dans les légendes.
+
+> Table3, légende au dessus. Attention, ce n'est peut-être pus le même algorithme.
+
+#### 2.4 Study of each phase
+
+> Figure 6, coquille altitud(e).
+
+Il faut choisir un indicateur de précision relative dans le chapitre précédent et le reprendre sur chaque phase dans celui-ci.
+
+### 3 Variations on fuel consumption
+
+> Figure 7, Garder les mêmes affichages du tube de confiance.
+
+Penser à construire une table globale pour une analyse causale.
+
+
 # Acien draft.
 
 ## Abstract.
