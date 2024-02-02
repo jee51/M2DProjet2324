@@ -55,7 +55,7 @@ Il faut choisir un indicateur de précision relative dans le chapitre précéden
 
 ### 3 Variations on fuel consumption
 
-> Figure 7, Garder les mêmes affichages du tube de confiance.
+> Figure 8, Garder les mêmes affichages du tube de confiance.
 
 Penser à construire une table globale pour une analyse causale.
 
