@@ -51,17 +51,25 @@ _ok_
 
 _ok_
 
-> "The first approach to check the validity of the model...", Il faut expliquer qu'ion a remarqué que la variabilité de l'erreur état pratiquement du même ordre de grandeur que la mesure de consommation, aussi on s'intéresse à un indicateur relatif comme l'écart-type divisé par la moyenne.
+> "The first approach to check the validity of the model...", Il faut expliquer qu'on a remarqué que la variabilité de l'erreur était pratiquement du même ordre de grandeur que la mesure de consommation, aussi on s'intéresse à un indicateur relatif comme l'écart-type divisé par la moyenne.
+
+_ok_
 
 > La variable dépendante, le facteur, c'est la durée, ce qui est logique. La consommation est la cible.
 
+_supprimé_
+
 > "The model's coefficients...", mettre moins de précision dans les chiffres et donner les unités.
+
+_ok_
 
 > Figure 5, si l'idée vous intéresse, pour le calcul de l'enveloppe et observant les valeurs proches en prédiction, il faudrait expliquer l'algorithme.
 
+_ok_
+
 En général, penser toujours à donner plus de détail dans les légendes.
 
-> Table3, légende au dessus. Attention, ce n'est peut-être pus le même algorithme.
+> Table3, légende au dessus. Attention, ce n'est peut-être plus le même algorithme.
 
 #### 2.4 Study of each phase
 
