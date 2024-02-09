@@ -144,15 +144,16 @@ J'ai rajouté la class RelativeIqr dans utils.py qui permet de calculé le score
 
 ### Plan for the future.
 
-Finish the capitalization of indicators (Khalifa). Decider indicators together.
-Complete the Results Data Table (Achille).
-Do the analyzes by phase and global (all).
+* Finish the capitalization of indicators (Khalifa). Select indicators together.
+* Complete the Results Data Table (Achille).
+* Do the analyzes by phase and global (all).
+
 Julia is owner of the article but participate also to computations.
 Others add and participates to the article.
 
 #### CLASSIFICATION OF OUT AND Sub-Consumption.
 
-Summary table.
-Statistical analysis.
-Cost (overconsumption/normal and on+normal/sub-consumption).Calculation in dolds.
-Explanation.
+* Summary table.
+* Statistical analysis.
+* Cost (overconsumption/normal and on+normal/sub-consumption).Calculation in dolds.
+* Explanation.
