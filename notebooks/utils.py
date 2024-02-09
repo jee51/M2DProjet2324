@@ -135,10 +135,13 @@ def get_consumption(ac, phase: str = None, threshold: int = 0.05):
                 dat+= [[ac.storename, 'Left', i, phase_duration, Alt_max, Mach_max, slope, average_egt, TAT_max, TAT_min, T_oil_range_1, volume1, total_weight]]
                 dat+= [[ac.storename, 'Right', i, phase_duration, Alt_max, Mach_max, slope, average_egt, TAT_max, TAT_min, T_oil_range_2, volume2, total_weight]]
 
-    dataframe = pd.DataFrame(dat,columns = ['AC', 'ENG', 'Flight', 'Duration', 'Alt_max', 'Alt_slope', 'Avg_egt',
+    dataframe = pd.DataFrame(dat,columns = ['AC', 'ENG', 'Flight',
+                                            'Duration', 'Alt_max',
+                                             'Alt_slope', 'Avg_egt',
                                              'TAT_max', 'TAT_min', 'T_oil_range', 'M_max', 'Volume', 'Weight'])
     
     return dataframe
+
 
 
 def extend(position, array, look, threshold):

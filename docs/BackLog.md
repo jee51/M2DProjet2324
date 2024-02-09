@@ -151,12 +151,23 @@ J'ai rajouté la class RelativeIqr dans utils.py qui permet de calculé le score
 Julia is owner of the article but participate also to computations.
 Others add and participates to the article.
 
-#### CLASSIFICATION OF OUT AND Sub-Consumption.
+#### CLASSIFICATION entre Over AND Sub-Consumption.
 
 * Summary table.
 * Statistical analysis.
-* Cost (overconsumption/normal and on+normal/sub-consumption).Calculation in dolds.
+* Cost (overconsumption/normal and on+normal/sub-consumption). Calculation in dollars.
 * Explanation.
 
 ## 12. 09/02/2024
 
+Présentation du travail de Khalifa. Développement des modèles basés sur les RF pour l'estimation des résidus.
+Un problème subsiste avec le rapport entre poids et volume du carburant. Les chiffres de Khalifa ne sont pas cohérents et montrent des consommation de millions de litres !
+
+### Reste à faire
+
+* Corriger le calcul du volume consommé.
+* Supprimer l'avion, le moteur et le vol de l'analyse.
+* Créer une table globale contenant toutes les données.
+* Terminer le modèle complet et faire l'estimation des variabilités.
+
+* Faire l'analyse de sur-consommation.
