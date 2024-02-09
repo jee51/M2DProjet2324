@@ -157,3 +157,6 @@ Others add and participates to the article.
 * Statistical analysis.
 * Cost (overconsumption/normal and on+normal/sub-consumption).Calculation in dolds.
 * Explanation.
+
+## 12. 09/02/2024
+
