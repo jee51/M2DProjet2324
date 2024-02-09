@@ -1,0 +1,64 @@
+Il s'agit d'un ensemble de données simulées de données moteur-avion enregistrées au cours de vols. L'usure habituelle des moteurs est prise en compte.
+Chaque fichier est le même avion et comporte environ 1000 vols.
+
+Chaque vol enregistre un nombre donné de mesures :
+_1 et _2 sont la position du moteur (1 : gauche, 2 : droite)
+Pi : pression
+Ti : température
+i : position du moteur de 0 avant la soufflante à 5 après la tuyère
+
+ALT [ft] Altitude
+EGT_1 [deg C] Température des gaz d'échappement
+EGT_2 [deg C]
+FMV_1 [mm] Vanne de dosage de carburant
+FMV_2 [mm]
+HPTACC_1 [%] Contrôle automatique du dégagement de la turbine haute pression
+HPTACC_2 [%]
+M [Mach] Mach
+N1_1 [% rpm] Vitesse de l'arbre secondaire (ventilateur)
+N1_2 [% rpm]
+N2_1 [% rpm] Vitesse de l'arbre primaire (noyau)
+N2_2 [% rpm]
+NAIV_1 [bool] Anti Ice Vanne
+NAIV_2 [bool]
+P0_1 [psia]
+P0_2 [psia]
+PRV_1 [bool] Purge (taxi)
+PRV_2 [bool]
+PS3_1 [psia] Pression statique
+PS3_2 [psia]
+PT2_1 [mbar] Pression
+PT2_2 [mbar]
+P_OIL_1 [psi] Pression d'huile
+P_OIL_2 [psi] Pression d'huile
+Q_1 [lb/h] Débit de carburant
+Q_2 [lb/h]
+T1_1 [deg C]
+T1_2 [deg C]
+T2_1 [deg C]
+T2_2 [deg C]
+T3_1 [deg C]
+T3_2 [deg C]
+T5_1 [deg C]
+T5_2 [deg C]
+TAT [deg C]
+TBV_1 [%] Soupape de purge de transfert
+TBV_2 [%]
+TCASE_1 [deg C] Température du boîtier
+TCASE_2 [deg C]
+TLA_1 [deg] Angle de niveau
+TLA_2 [deg]
+T_OIL_1 [deg C] Température de l'huile
+T_OIL_2 [deg C]
+VBV_1 [mm] Vanne de purge variable
+VBV_2 [mm]
+VIB_AN1_1 [mils] Vibration avant autour de la fréquence N1
+VIB_AN1_2 [millièmes de pouce]
+VIB_AN2_1 [ips] Vibration avant autour de la fréquence N2
+VIB_AN2_2 [ips]
+VIB_BN1_1 [mils] Vibrations de la boîte de vitesses autour de la fréquence N1
+VIB_BN1_2 [mils]
+VIB_BN2_1 [ips] Vibrations de la boîte de vitesses autour de la fréquence N2
+VIB_BN2_2 [ips]
+VSV_1 [mm] Stator variable Vannes
+VSV_2 [mm]
