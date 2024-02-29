@@ -240,7 +240,7 @@ class RelativeIqr:
         else:
             return self.relative_iqr
     
-    def plot(self):
+    def plot(self, xlabel='Estimate [l]', ylabel='Volume [l]'):
         """
             Cette fonction affiche l'enveloppe calculée pour le calcul du score relative_enveloppe_iqr.
         """
@@ -253,8 +253,9 @@ class RelativeIqr:
 
         plt.fill_between(hy[i], hy[i]+up[i], hy[i]+dn[i], color='lightgreen', alpha=0.9)
         plt.plot(hy[i],y[i],'b.', alpha=0.1)
-        plt.ylabel('Observed')
-        plt.xlabel('Predicted')
+        plt.ylabel(ylabel)
+        plt.xlabel(xlabel)
         plt.title(f"Relative enveloppe with {self.c:.0f}% confidence and local proximity {self.p:.0f}%.")
+        print(f"Relative Iqr Score = {self.relative_iqr:.1f}%")
 
 

@@ -171,3 +171,18 @@ Un problème subsiste avec le rapport entre poids et volume du carburant. Les ch
 * Terminer le modèle complet et faire l'estimation des variabilités.
 
 * Faire l'analyse de sur-consommation.
+
+## 13. 01/03/2024
+
+J'ai créé quelques éléments en reprennnant vos travaux :
+
+* Découpage en trois étapes
+> 1. Création d'une table d'indicateurs par phase.
+> 2. Etude directe de la consommation en fonction de la durée.
+> 3. Analyse phase par phase et création d'un modèle global.
+> 4. Etude des résidus.
+
+* Recopie de l'extraction de phase parce qu'on avait trop de modules utils.py.
+* Rajout de l'indicateur T_oil_init pour détecter les départs à froid.
+* Suppression des vols dont on ne trouve pas la descente.
+* Sauvegarde de la table d'indicateur dans le fichier out/Results.h5.
