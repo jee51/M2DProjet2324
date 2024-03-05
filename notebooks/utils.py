@@ -1,9 +1,12 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy import stats
+
+
 
 '''
-    Changelog 19/1: 
+    Changelog 19/01: 
         1. Modified the detect_phase() function:
             *Changed the selection of taxi phase to taking two set of index which is on two side of the "cruise_pos"
             "cruise_pos" choose the first position where the aircraft has highest altitude,
@@ -20,6 +23,18 @@ import matplotlib.pyplot as plt
             + T_Oil_Range: The range between the lowest and highest oil temp of each engine
             + Avg_EGT: Average entrance temp
             + Alt_slope: The slope of the altitude when climbing.
+
+    Changelog 25/01:
+        Modified the get_consumption() function to:
+            + return the aircrafts name as "AC01, AC02,, ..."
+            + rename the variable "Duration" as "Leg_phase"
+            + add the variable "Leg_flight": duration of the flight
+            + add the variable "phase", referring to the phase considered
+
+    Changelog 09/02:
+            + Modified the get_consumption() function to add variables: "TLA_deg", "NAIV_bool"
+            + Assign the right values to variables 
+
     
 '''
 def detect_phase(df, threshold):
@@ -48,7 +63,7 @@ def detect_phase(df, threshold):
     idx2 = idx[idx > cruise_pos] #another one after cruise
     
     if len(idx1) == 0 or len(idx2) == 0: #If the record is incomplete
-        print('Record is incomplete')
+        # print('Record is incomplete')
         return False
     else:
         taxi1_idx = min(idx1), max(idx1)
@@ -67,6 +82,7 @@ def detect_phase(df, threshold):
 
     return taxi1_idx, climb_idx, cruise_idx, descend_idx, taxi2_idx 
 
+
 def get_consumption(ac, phase: str = None, threshold: int = 0.05):
     '''
         Input: 
@@ -78,12 +94,15 @@ def get_consumption(ac, phase: str = None, threshold: int = 0.05):
     '''
 
     dat = []
+    LB2KG = 0.453592  # kg/lb 
+    KDENS = 0.73      # kg/l
     for i, df in enumerate(ac):
 
         if len(df.columns)>0 and "ALT [ft]" in df.columns:
             
             alt = df["ALT [ft]"]
             Alt_max = max(alt)
+            
 
             if Alt_max > 20000: # Maxmimum altitude can indicates if a recording is meaningful or not
                 
@@ -91,7 +110,7 @@ def get_consumption(ac, phase: str = None, threshold: int = 0.05):
                 phases = detect_phase(df, threshold) # phases = taxi1_idx, climb_idx, cruise_idx, descend_idx, taxi2_idx
 
                 if phases == False:
-                    print(i)
+                    # print(i)
                     continue
                 else:
                     taxi1_idx, climb_idx, cruise_idx, descend_idx, taxi2_idx = phases
@@ -114,40 +133,122 @@ def get_consumption(ac, phase: str = None, threshold: int = 0.05):
                             
                 df_phase = df.iloc[idx] 
 
-                total_weight_engine1 = df_phase['Q_1 [lb/h]'].sum()/(3600*2.205) #(to kg) #consumption is the integral (sum) of consumption rate
-                total_weight_engine2 = df_phase['Q_2 [lb/h]'].sum()/(3600*2.205) #(to kg)
+                Q1 = df_phase["Q_1 [lb/h]"].sum()/3600.0 # en lb
+                Q2 = df_phase["Q_2 [lb/h]"].sum()/3600.0
+                total_weight_engine1 = Q1*LB2KG   # en kg
+                total_weight_engine2 = Q2*LB2KG
                 total_weight = total_weight_engine1 + total_weight_engine2
                 
-                volume1 = total_weight_engine1 /0.73 
-                volume2 = total_weight_engine2 /0.73 
-                phase_duration = len(df_phase)/3600 # in hour     
+                volume1 = total_weight_engine1 / KDENS  # en l
+                volume2 = total_weight_engine2 / KDENS
+                phase_duration = len(df_phase)/3600.0 # in hour     
                 average_egt = np.mean(df_phase['EGT_1 [deg C]']) + np.mean(df_phase['EGT_2 [deg C]'])
                 TAT_max = df['TAT [deg C]'].max()
                 TAT_min = df['TAT [deg C]'].min() 
                 T_oil_range_1 =  df_phase['T_OIL_1 [deg C]'].max() - df_phase['T_OIL_1 [deg C]'].min()
                 T_oil_range_2 =  df_phase['T_OIL_2 [deg C]'].max() - df_phase['T_OIL_2 [deg C]'].min()
-                Mach_max = df["M [Mach]"].max()
+                Mach_max = df['M [Mach]'].max()
                 try:
                     slope = (df_phase['ALT [ft]'].max() - df_phase['ALT [ft]'].min())/len(df_phase)
                 except: 
                     slope = 0
-                    
+
                 #TLA
                 tla_1 = df_phase['TLA_1 [deg]'].unique().shape[0]
                 tla_2 = df_phase['TLA_2 [deg]'].unique().shape[0]
                 # NAI
-                naiv_1 = df_phase['NAIV_2 [bool]'].sum()
+                naiv_1 = df_phase['NAIV_1 [bool]'].sum()
                 naiv_2 = df_phase['NAIV_2 [bool]'].sum()
-                
-                dat+= [[ac.storename, 'Left', i, phase_duration, Alt_max, Mach_max, slope, 
-                        average_egt, TAT_max, TAT_min, T_oil_range_1, volume1, total_weight, tla_1, naiv_1]]
-                dat+= [[ac.storename, 'Right', i, phase_duration, Alt_max, Mach_max, slope, 
-                        average_egt, TAT_max, TAT_min, T_oil_range_2, volume2, total_weight, tla_2, naiv_2]]
 
-    dataframe = pd.DataFrame(dat,columns = ['AC', 'ENG', 'Flight', 'Duration', 'Alt_max','Alt_slope', 'Avg_egt','TAT_max', 'TAT_min', 
-                                            'T_oil_range', 'M_max', 'Volume', 'Weight', 'TLA', 'NAIV'])
+                Leg = len(df)/3600.0 # En h
+                dat+= [['AC'+ac.storename[-5:-3], 'Left', i, phase, Leg, phase_duration, Alt_max, slope, average_egt, TAT_max, TAT_min, T_oil_range_1, Mach_max, tla_1, naiv_1, volume1, total_weight]]
+                dat+= [['AC'+ac.storename[-5:-3], 'Right', i, phase, Leg, phase_duration, Alt_max, slope, average_egt, TAT_max, TAT_min, T_oil_range_2, Mach_max, tla_2, naiv_2, volume2, total_weight]]
+
+    dataframe = pd.DataFrame(dat,columns = ['AC', 'ENG', 'Flight', 'Phase', 'Leg_flight_H', 'Leg_phase_H', 'Alt_max_Ft', 'Alt_slope', 'Avg_egt',
+                                            'TAT_max', 'TAT_min', 'T_oil_range', 'M_max', 'TLA', 'NAIV', 'Volume_L', 'Weight_Kg'])
+    
+
+                
     
     return dataframe
+
+
+def extend(position, array, look, threshold):
+    # This function extend the from the input position to the left and right
+    # to find the cruise phase
+    left_pos,right_pos = position, position
+    # Search left position
+    # l = 0
+    while True:
+        avg_left = np.mean(array[left_pos - look:left_pos])
+        relative_dif = np.abs(avg_left - array[left_pos]/array[left_pos])
+        if relative_dif < threshold:
+            left_pos -= look #translate to the left
+        else: #check the next 3 interval to see the trend
+            next_five_mean = [np.mean(array[left_pos - (i+1)*look : left_pos - i*look]) for i in range(3)] 
+            next_rel_dif = [np.abs(next_five_mean[i] - array[left_pos - i*look]/array[left_pos - i*look]) for i in range(3)]
+            if np.mean(next_rel_dif) < threshold:
+                left_pos -= look//10
+            else:
+                # print(l)
+                break
+        # l+=1
+    # r = 0
+    # Search right position
+    while True:
+        avg_right = np.mean(array[right_pos : right_pos+look])
+        relative_dif = np.abs(avg_right - array[right_pos]/array[right_pos])
+        if relative_dif < threshold:
+            right_pos += look #translate to the right
+        else: #check the next 3 interval to see the trend
+            next_five_mean = [np.mean(array[right_pos + i*look : right_pos + (i+1)*look]) for i in range(3)] 
+            next_rel_dif = [np.abs(next_five_mean[i] - array[right_pos + i*look])/array[right_pos + i*look] for i in range(3)]
+            if np.mean(next_rel_dif) < threshold:
+                right_pos += look//10
+            else:
+                # print(r)
+                break
+        # r+=1
+    return left_pos, right_pos
+
+
+def plot_residuals(res, title):
+    """
+    Plot graphics to analyze residuals
+
+    res : a trained model object from statsmodels
+    """
+
+    residus = res.resid
+    predicted_values = res.fittedvalues
+    
+    fig = plt.figure(figsize=(20,6))
+
+    ax1 = fig.add_subplot(1, 3, 1)
+    plt.hist(residus, bins=30, edgecolor='black')
+    ax1.set_xlabel('Residuals')
+    ax1.set_xlabel('Frequence')
+    ax1.set_title('Histogram of residuals')
+
+    ax2 = fig.add_subplot(1, 3, 2)
+    plt.scatter(predicted_values, residus, s=15)
+    ax2.set_xlabel('Predicted values')
+    ax2.set_ylabel('Residuals')
+    plt.axhline(y=0, color='red', linestyle='--')  # Ajout d'une ligne à zéro pour la référence
+    ax2.set_title('Scatter plot of residuals')
+
+    ax3 = fig.add_subplot(1, 3, 3)
+    stats.probplot(residus, dist="norm", plot=plt)
+    ax3.set_xlabel('Theoretical quantiles')
+    ax3.set_ylabel('Residuals quantiles')
+    ax3.set_title('QQ-residual plot')
+
+    plt.suptitle(title, y = 1.03, fontsize=15)
+
+    plt.show()
+    plt.tight_layout()
+    plt.close()
+
 
 class RelativeIqr:
     """
@@ -207,7 +308,7 @@ class RelativeIqr:
         else:
             return self.relative_iqr
     
-    def plot(self, xlabel='Estimate [l]', ylabel='Volume [l]'):
+    def plot(self):
         """
             Cette fonction affiche l'enveloppe calculée pour le calcul du score relative_enveloppe_iqr.
         """
@@ -220,9 +321,6 @@ class RelativeIqr:
 
         plt.fill_between(hy[i], hy[i]+up[i], hy[i]+dn[i], color='lightgreen', alpha=0.9)
         plt.plot(hy[i],y[i],'b.', alpha=0.1)
-        plt.ylabel(ylabel)
-        plt.xlabel(xlabel)
+        plt.ylabel('Observed')
+        plt.xlabel('Predicted')
         plt.title(f"Relative enveloppe with {self.c:.0f}% confidence and local proximity {self.p:.0f}%.")
-        print(f"Relative Iqr Score = {self.relative_iqr:.1f}%")
-
-
