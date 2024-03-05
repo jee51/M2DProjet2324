@@ -131,14 +131,21 @@ def get_consumption(ac, phase: str = None, threshold: int = 0.05):
                     slope = (df_phase['ALT [ft]'].max() - df_phase['ALT [ft]'].min())/len(df_phase)
                 except: 
                     slope = 0
+                    
+                #TLA
+                tla_1 = df_phase['TLA_1 [deg]'].unique().shape[0]
+                tla_2 = df_phase['TLA_2 [deg]'].unique().shape[0]
+                # NAI
+                naiv_1 = df_phase['NAIV_2 [bool]'].sum()
+                naiv_2 = df_phase['NAIV_2 [bool]'].sum()
+                
+                dat+= [[ac.storename, 'Left', i, phase_duration, Alt_max, Mach_max, slope, 
+                        average_egt, TAT_max, TAT_min, T_oil_range_1, volume1, total_weight, tla_1, naiv_1]]
+                dat+= [[ac.storename, 'Right', i, phase_duration, Alt_max, Mach_max, slope, 
+                        average_egt, TAT_max, TAT_min, T_oil_range_2, volume2, total_weight, tla_2, naiv_2]]
 
-                dat+= [[ac.storename, 'Left', i, phase_duration, Alt_max, Mach_max, slope, average_egt, TAT_max, TAT_min, T_oil_range_1, volume1, total_weight]]
-                dat+= [[ac.storename, 'Right', i, phase_duration, Alt_max, Mach_max, slope, average_egt, TAT_max, TAT_min, T_oil_range_2, volume2, total_weight]]
-
-    dataframe = pd.DataFrame(dat,columns = ['AC', 'ENG', 'Flight',
-                                            'Duration', 'Alt_max',
-                                             'Alt_slope', 'Avg_egt',
-                                             'TAT_max', 'TAT_min', 'T_oil_range', 'M_max', 'Volume', 'Weight'])
+    dataframe = pd.DataFrame(dat,columns = ['AC', 'ENG', 'Flight', 'Duration', 'Alt_max','Alt_slope', 'Avg_egt','TAT_max', 'TAT_min', 
+                                            'T_oil_range', 'M_max', 'Volume', 'Weight', 'TLA', 'NAIV'])
     
     return dataframe
 
